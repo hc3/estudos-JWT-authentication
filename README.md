@@ -62,8 +62,9 @@ podemos ver no exemplo que é executado um código malicioso no browser e com is
 <li>Client Side: verificar inputs em forms enviandos pelo usuário existem frameworks que podem fazer isso por nós, mas é sempre bom ver a documentação.</li>
 <li>Setar o atributo HttpOnly para authenticação dos cookies. <b>Com HttpOnly os cookies não são acessíveis pelo javascript environment.</b></li>
 
+<tr>
 links de exemplo:
-https://www.owasp.org/index.php/XSS
+https://www.owasp.org/index.php/XSS </br>
 https://www.google.com/about/appsecurity/learning/xss/
 
 <b>Cross-Site Request Forgery (CSRF)</b>
