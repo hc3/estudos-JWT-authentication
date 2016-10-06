@@ -143,3 +143,15 @@ o body do JWT é a parte mais importante e está dividida da seguinte forma:
 ````
 
 <b>Enviando e verificando JWTs </b>
+
+Enviando JWTs:
+<li>User tem que apresentar credenciais para ter um token (password , api keys).</li>
+<li>Tokens são enviados pelo servidor e assinados com uma chave secreta que é privada.</li>
+<li>O client guarda o token e o usa para authenticar os requests.</li>
+
+Verificando JWTs:
+<li>Deve checar a assinatura e tempo para expiração ( stateless authentication ).</li>
+<li>Token declara o scopo, tomar decisões de autorização localmente.</li>
+<li>mas como revogar stateless authentication.</li>
+
+<b>OAuth2 + JWT ( Access & Refresh Tokens )</b>
