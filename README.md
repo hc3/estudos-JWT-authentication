@@ -89,4 +89,4 @@ Double-submit cookie </br>
 <li>Client envia de volta um valor random no header, desencadeando o same-origin-policy.</li>
 
 a imagem abaixo detalha como isso acontece:
-<img src="img/img1-session-cookie-random.png"/>
+<img src="img/img2-session-cookie-random.png"/>
