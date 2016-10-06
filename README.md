@@ -258,6 +258,6 @@ $stateProvider
 <li>Se recebermos um 401 como statusCode a transmissão do evento ocorre em $unauthenticated event</li>
 <li>Redireciona para login view.</li>
 
-esse artigo é baseado:
+esse artigo é baseado: </br>
 [slides](http://www.slideshare.net/robertjd/jwt-authentication-with-angularjs?from_action=save)</br>
 [vídeo](https://www.youtube.com/watch?v=mecILj3p4VA)
