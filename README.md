@@ -133,7 +133,7 @@ e esse mesmo JWT decodificado fica dessa forma:
 
 o body do JWT é a parte mais importante e está dividida da seguinte forma:
 
-````
+````json
 {
   "iss":"http://trustapp.com/", <---- quem emitiu o token.
   "exp":"1300819380", <---- quando vai expirar.
@@ -209,7 +209,7 @@ O usuário está logado?
 <li>O route retorna o objeto do usuário</li>
 <li>Use uma promisse para retornar esse objeto</li>
 exemplo:
-````
+````js
 angular.module('myapp')
   .config(function($stateProvider) {
     $stateProvider
@@ -237,7 +237,7 @@ angular.module('myapp')
 
 <b>Verificar o acesso do usuário para a view</b>
 exemplo:
-````
+````js
 $stateProvider
   .state('home', {
     url:'/',
