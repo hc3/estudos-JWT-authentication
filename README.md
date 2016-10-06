@@ -198,14 +198,65 @@ Lógica de authenticação usnado cookies:
 
 ## Entãooo... AngularJS?
 
+<b>JWT com angularJS</b>
+<li>Como eu vou saber se um usuário está logado?</li>
+<li>Como eu vou saber se um usuário tem acesso a view?</li>
+<li>Como eu vou saber se um usuário está com acesso removido?</li>
 
+O usuário está logado?
+<li>Cookies não pode lhe dizer isso, se estivermos usando HttpOnly</li>
+<li>Vamos fazer um request para '/me' route com solicitação do token authentication</li>
+<li>O route retorna o objeto do usuário</li>
+<li>Use uma promisse para retornar esse objeto</li>
+exemplo:
+````
+angular.module('myapp')
+  .config(function($stateProvider) {
+    $stateProvider
+      .state('home', {
+        url:'/',
+        templateUrl: 'views/home.html',
+        resolve: {
+          user: function($auth) {
+            return $auth.getUser();
+          }
+        }
+        })
+    })
+````
 
+<li>UI Router: usa $stateChangeError para enviar qualquer erro da promisse, e direcionar para a view login.</li>
+<li>ngRoute: $routeChangeError</li>
 
+<li> manter $rootScope.user
+  <li> null = nós não sabemos quem é</li>
+  <li> fakse = não esta logado</li>
+  <li> { } = nos temos um usuário data</li>
+</li>
+<li>Transmissão $authenticated é o evento disparado quando o usuário é conhecido.</li>
 
+<b>Verificar o acesso do usuário para a view</b>
+exemplo:
+````
+$stateProvider
+  .state('home', {
+    url:'/',
+    templateUrl:'views/home.html',
+    resolve: {
+      user: function($auth) {
+        return $auth.getUser()
+          .then(function(user) {
+            // pode ter acesso a view?
+            return true/false;
+            })
+      }
+    }
+    })
+````
 
-
-
-
+<b>Se o acesso foi removido?</b>
+<li>Se recebermos um 401 como statusCode a transmissão do evento ocorre em $unauthenticated event</li>
+<li>Redireciona para login view.</li>
 
 esse artigo é baseado:
 [slides](http://www.slideshare.net/robertjd/jwt-authentication-with-angularjs?from_action=save)</br>
