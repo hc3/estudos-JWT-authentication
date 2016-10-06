@@ -90,3 +90,56 @@ Double-submit cookie </br>
 
 a imagem abaixo detalha como isso acontece:
 <img src="img/img2-session-cookie-random.png"/>
+
+e o servidor agora sabe tratar e rejeitar a ação maliciosa.
+
+a imagem abaixo detalha como isso acontece:
+<img src="img/img3-session-cookie-reject.png"/>
+
+para saber mais:
+https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF) </br>
+https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy </br>
+
+### Introdução a JWT
+
+<b>Definição</b>
+
+<li><b>Authenticação:</b> é quando provamos quem somos.</li>
+
+<li><b>Authorização:</b> é quando garantimos que temos acesso algum resource.</li>
+
+<li><b>Tokens:</b> são usados para persistir a authenticação e para pegar ( get ) a authorização.</li>
+
+<li><b>JWT:</b> é um formato de token.</li>
+
+<b> JSON web tokens (JWT) </b>
+
+um JWT parece com uma string sem sentido algo do tipo
+````
+eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJ
+pc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQo
+gImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnV
+lfQ.dBjftJeZ4CVPmB92K27uhbUJU1p1r_wW1gFWFOEj
+Xk
+````
+mas ele não é 'sem sentido', o JWT consiste em uma estrutura
+com três partes encodadas em Base64-URL:
+
+<img src="img/img4-JWT-div.png"/>
+
+e esse mesmo JWT decodificado fica dessa forma:
+
+<img src="img/img5-JWT-decoded.png"/>
+
+o body do JWT é a parte mais importante e está dividida da seguinte forma:
+
+````
+{
+  "iss":"http://trustapp.com/", <---- quem emitiu o token.
+  "exp":"1300819380", <---- quando vai expirar.
+  "sub":"users/258594", <---- quem representa ( usuário ).
+  "scope":"self api/buy", <--- o que pode fazer.
+}
+````
+
+<b>Enviando e verificando JWTs </b>
