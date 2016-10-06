@@ -19,7 +19,7 @@ Identificadores de sessão, esse é uma maneira prática e simples para gerencia
 <li>Guardar a session ID em um cookie</li>
 
 a imagem abaixo detalha como isso acontece:
-<img src="img do slide 8"/>
+<img src="img/img1-session-cookie.png"/>
 
 podemos ver que o usuário faz login e quando isso acontece é enviando o login e senha via POST estando tudo certo o servidor retorna um http statusCode 200 e seta um ID para a sessão
 armazena esse session ID em um cookie e quando o usuário fizer uma requisição para profile por exemplo é feito um get nesse cookie e nesse momento ocorre uma verificação se o session ID for igual ao que foi enviando pelo servidor então e retornado um 200 e para cada requisição tudo ocorre asim.
@@ -62,9 +62,31 @@ podemos ver no exemplo que é executado um código malicioso no browser e com is
 <li>Client Side: verificar inputs em forms enviandos pelo usuário existem frameworks que podem fazer isso por nós, mas é sempre bom ver a documentação.</li>
 <li>Setar o atributo HttpOnly para authenticação dos cookies. <b>Com HttpOnly os cookies não são acessíveis pelo javascript environment.</b></li>
 
-<tr>
 links de exemplo:
 https://www.owasp.org/index.php/XSS </br>
 https://www.google.com/about/appsecurity/learning/xss/
 
 <b>Cross-Site Request Forgery (CSRF)</b>
+
+Explora o fato de tags HTML não seguir a mesma política de origem ao fazer solicitações GET.
+
+exemplo: um atacante coloca uma imagem com conteúdo malicioso dentro de uma pagina WEB que seus usuários visitam.
+````
+<img src="https://trustyapp.com/transferMoney?to=BadGuy&amount=10000"/>
+````
+o que irá acontecer aqui é:
+<li>o browser irá enviar cookies para trustapp.com.</li>
+<li>o servidor enviar um cookie confiável e assume que foi uma ação do usuário.</li>
+<li>transfere o dinheiro.</li>
+
+<i>Solução:</i>
+<li>Sincronizar token (para aplicações form-based)</li>
+<li>Double-submit cookie ( para aplicações modernas)</li>
+
+Double-submit cookie </br>
+
+<li>cliente tem dois cookies, o um é session ID e o segundo é um valor random.</li>
+<li>Client envia de volta um valor random no header, desencadeando o same-origin-policy.</li>
+
+a imagem abaixo detalha como isso acontece:
+<img src="img/img1-session-cookie-random.png"/>
