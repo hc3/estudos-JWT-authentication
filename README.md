@@ -155,3 +155,58 @@ Verificando JWTs:
 <li>mas como revogar stateless authentication.</li>
 
 <b>OAuth2 + JWT ( Access & Refresh Tokens )</b>
+
+Access & Refresh tokens:
+<li>O cliente tem acesso e atualiza o token.</li>
+<li>Access token expira antes da atualização do token.</li>
+<li>Refresh token é usado para pegar mais access tokens.</li>
+<li>Access tokens são confiáveis por assinatura.</li>
+<li>Refresh tokens são checados para revogação.</li>
+
+Lhe da o controle baseado no tempo de troca: stateless confiável vs Database lookup.
+
+<i>Exemplos:</i>
+<li>Super-seguro ( se deseja forçar o usuário a sair rapido: )
+  <li>Access token TTL = 1 minuto</li>
+  <li>Refresh token TTL = 30 minutos</li>
+</li>
+<li>Mobile/social app ( usuário deve ficar sempre logado )
+  <li>Access token TTL = 1 hora</li>
+  <li>Refresh token TTL == 4 anos</li>
+</li>
+
+<b>Armazenando e transmitindo JWTs ( no browser )</b>
+
+<i>preocupações</i>:
+<li>Local storage não é seguro ( XSS vulnerabilidade)</li>
+<li>Cookies são segures, com <b>HttpOnly</b>, <b>Secure</b> Flags e CSRF prevenção.</li>
+<li>Usando o header <i>Authorização</i> fica legal mas não é realmente necessário.</li>
+<li>Cross-domain request são sempre um inferno :D</li>
+
+Lógica de authenticação usnado cookies:
+<li>
+  Existe um token e acesso? ele é valido? ( assinatura e expiração)?
+  <li>Sim? libera o request!</li>
+  <li>Não? tente pegar um novo access token, usando o refresh token
+    <li>
+      Isso funcionou?
+        <li>Sim? libera o request e manda o novo acess token no response como cookie.</li>
+        <li>Não? Rejeita o request e deleta o refresh token cookie.</li>
+    </li>
+  </li>
+</li>
+
+## Entãooo... AngularJS?
+
+
+
+
+
+
+
+
+
+
+esse artigo é baseado:
+[slides](http://www.slideshare.net/robertjd/jwt-authentication-with-angularjs?from_action=save)</br>
+[vídeo](https://www.youtube.com/watch?v=mecILj3p4VA)
