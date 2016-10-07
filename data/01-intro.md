@@ -248,7 +248,7 @@ angular.module('myapp')
       <li> { } = nos temos um usuário data</li>
     </ul>
   </li>
-<ul>
+</ul>
 <li>Transmissão $authenticated é o evento disparado quando o usuário é conhecido.</li>
 
 <b>Verificar o acesso do usuário para a view</b>

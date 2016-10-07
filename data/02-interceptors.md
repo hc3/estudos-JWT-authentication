@@ -1,6 +1,6 @@
 # Interceptors angularJS.
 
-Um interceptor é um tipo de serviço que permite a interceptação das requisições e respostas do serviço <b>$http</p>.
+Um interceptor é um tipo de serviço que permite a interceptação das requisições e respostas do serviço <b>$http</b>.
 
 <i>exemplo</i>:
 ````js
@@ -33,3 +33,5 @@ app.config(function($httpProvider) {
   $httpProvider.interceptors.push('nomeDoInterceptor4');
 })
 ````
+
+Existem dois tipo de interceptors, o Request interceptor e o Response interceptor um vai inteceptar o request e o outro o response, 
