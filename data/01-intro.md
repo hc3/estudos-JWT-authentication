@@ -19,7 +19,7 @@ Identificadores de sessão, esse é uma maneira prática e simples para gerencia
 <li>Guardar a session ID em um cookie</li>
 
 a imagem abaixo detalha como isso acontece:
-<img src="img/img1-session-cookie.png"/>
+<img src="../img/img1-session-cookie.png"/>
 
 podemos ver que o usuário faz login e quando isso acontece é enviando o login e senha via POST estando tudo certo o servidor retorna um http statusCode 200 e seta um ID para a sessão
 armazena esse session ID em um cookie e quando o usuário fizer uma requisição para profile por exemplo é feito um get nesse cookie e nesse momento ocorre uma verificação se o session ID for igual ao que foi enviando pelo servidor então e retornado um 200 e para cada requisição tudo ocorre asim.
@@ -89,12 +89,12 @@ Double-submit cookie </br>
 <li>Client envia de volta um valor random no header, desencadeando o same-origin-policy.</li>
 
 a imagem abaixo detalha como isso acontece:
-<img src="img/img2-session-cookie-random.png"/>
+<img src="../img/img2-session-cookie-random.png"/>
 
 e o servidor agora sabe tratar e rejeitar a ação maliciosa.
 
 a imagem abaixo detalha como isso acontece:
-<img src="img/img3-session-cookie-reject.png"/>
+<img src="../img/img3-session-cookie-reject.png"/>
 
 para saber mais:
 https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF) </br>
@@ -125,11 +125,11 @@ Xk
 mas ele não é 'sem sentido', o JWT consiste em uma estrutura
 com três partes encodadas em Base64-URL:
 
-<img src="img/img4-JWT-div.png"/>
+<img src="../img/img4-JWT-div.png"/>
 
 e esse mesmo JWT decodificado fica dessa forma:
 
-<img src="img/img5-JWT-decoded.png"/>
+<img src="../img/img5-JWT-decoded.png"/>
 
 o body do JWT é a parte mais importante e está dividida da seguinte forma:
 
