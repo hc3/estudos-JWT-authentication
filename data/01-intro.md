@@ -166,35 +166,48 @@ Access & Refresh tokens:
 Lhe da o controle baseado no tempo de troca: stateless confiável vs Database lookup.
 
 <i>Exemplos:</i>
-<li>Super-seguro ( se deseja forçar o usuário a sair rapido: )
-  <li>Access token TTL = 1 minuto</li>
-  <li>Refresh token TTL = 30 minutos</li>
-</li>
-<li>Mobile/social app ( usuário deve ficar sempre logado )
-  <li>Access token TTL = 1 hora</li>
-  <li>Refresh token TTL == 4 anos</li>
-</li>
-
+<ul>
+  <li>Super-seguro ( se deseja forçar o usuário a sair rapido: )
+    <ul>
+      <li>Access token TTL = 1 minuto</li>
+      <li>Refresh token TTL = 30 minutos</li>
+    </ul>
+  </li>
+  <li>Mobile/social app ( usuário deve ficar sempre logado )
+    <ul>
+      <li>Access token TTL = 1 hora</li>
+      <li>Refresh token TTL == 4 anos</li>
+    </ul>
+  </li>
+</ul>
 <b>Armazenando e transmitindo JWTs ( no browser )</b>
 
 <i>preocupações</i>:
-<li>Local storage não é seguro ( XSS vulnerabilidade)</li>
-<li>Cookies são segures, com <b>HttpOnly</b>, <b>Secure</b> Flags e CSRF prevenção.</li>
-<li>Usando o header <i>Authorização</i> fica legal mas não é realmente necessário.</li>
-<li>Cross-domain request são sempre um inferno :D</li>
+<ul>
+  <li>Local storage não é seguro ( XSS vulnerabilidade)</li>
+  <li>Cookies são segures, com <b>HttpOnly</b>, <b>Secure</b> Flags e CSRF prevenção.</li>
+  <li>Usando o header <i>Authorização</i> fica legal mas não é realmente necessário.</li>
+  <li>Cross-domain request são sempre um inferno :D</li>
+</ul>
 
 Lógica de authenticação usnado cookies:
-<li>
-  Existe um token e acesso? ele é valido? ( assinatura e expiração)?
-  <li>Sim? libera o request!</li>
-  <li>Não? tente pegar um novo access token, usando o refresh token
-    <li>
-      Isso funcionou?
-        <li>Sim? libera o request e manda o novo acess token no response como cookie.</li>
-        <li>Não? Rejeita o request e deleta o refresh token cookie.</li>
+<ul>
+  <li> Existe um token e acesso? ele é valido? ( assinatura e expiração)?
+    <ul>
+      <li>Sim? libera o request!</li>
+      <li>Não? tente pegar um novo access token, usando o refresh token
+      <ul>
+        <li>Isso funcionou?
+        <ul>
+          <li>Sim? libera o request e manda o novo acess token no response como cookie.</li>
+          <li>Não? Rejeita o request e deleta o refresh token cookie.</li>
+        </ul>
+        </li>
+      </ul>
     </li>
+    </ul>
   </li>
-</li>
+</ul>
 
 ## Entãooo... AngularJS?
 
@@ -227,12 +240,15 @@ angular.module('myapp')
 
 <li>UI Router: usa $stateChangeError para enviar qualquer erro da promisse, e direcionar para a view login.</li>
 <li>ngRoute: $routeChangeError</li>
-
-<li> manter $rootScope.user
-  <li> null = nós não sabemos quem é</li>
-  <li> fakse = não esta logado</li>
-  <li> { } = nos temos um usuário data</li>
-</li>
+<ul>
+  <li> manter $rootScope.user
+    <ul>
+      <li> null = nós não sabemos quem é</li>
+      <li> fakse = não esta logado</li>
+      <li> { } = nos temos um usuário data</li>
+    </ul>
+  </li>
+<ul>
 <li>Transmissão $authenticated é o evento disparado quando o usuário é conhecido.</li>
 
 <b>Verificar o acesso do usuário para a view</b>
