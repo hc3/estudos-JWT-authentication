@@ -36,7 +36,7 @@ app.config(function($httpProvider) {
 
 Existem dois tipo de interceptors, o Request interceptor e o Response interceptor um vai inteceptar o request e o outro o response, vamos ver agora um exemplo de um interceptor que faz a authorização de cada requisição usando JWT, primeiro de tudo vamos ver o serviço q faz login:
 <i>login.service.js</i>
-````
+````js
 (function() {
     'use strict';
 
@@ -84,7 +84,7 @@ Existem dois tipo de interceptors, o Request interceptor e o Response intercepto
 podemos ver aqui que é feito uma req do tipo POST em '/token' essa req retorna um token válido se o usuário e senha estiverem corretos, então se a promisse entrar em success vamos fazer um test verificar se existe um token e a partir da ai setamos os headers com o email e token e depois usamos <b>localStorage.setItem('token',token);</b> passando o token que agora está disponível no localstorage e vamos agora usar esse artificio para 'pegar' o token lá no interceptor vamos lá...
 
 <i>authInterceptor.js</i>
-````
+````js
 (function() {
     'use strict';
 
@@ -124,7 +124,7 @@ podemos ver aqui que é feito uma req do tipo POST em '/token' essa req retorna 
 podemos ver aqui como é simples, HAHA muita cara de pau minha dizer isso que passei 3 dias pra conseguir implementar maaas , kkk vamos ao que interessa... , o interceptor vai ter um request recebendo config e vamos novamente em localStorage e se tivermos um token setamos esse token no header do config e retornamos o config como header <b>Authorization</b> e temos o responseError ou seja se o status da resposta for 401 ou 403 enviamos para uma url de erro e retornamos $q.reject e retornamos a rejection, e agora criamos um config para adicionar o interceptor no array de interceptor.
 
 <i>interceptorConfig.js</i>
-````
+````js
 angular
     .module('app')
     .config(config);
